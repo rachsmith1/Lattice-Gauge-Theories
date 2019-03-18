@@ -26,8 +26,8 @@ def JackKnife(e, e2, K, L):
 
 def Run(vals):
 
-    dt = 100
-    N = 3000
+    dt = 50
+    N = 6000
     eq_time = 2000
     run_time = dt*N
 
@@ -75,45 +75,45 @@ def Run(vals):
             # Spin is on the x-axis bond
             if b==0:
                 e += -2*self.state[X,Y,Z,0]*(
-                            self.B*self.K*self.state[X,Y,Z,2] * self.state[X,Y,self.pbc(Z+1),0] * self.state[self.pbc(X+1),Y,Z,2] +
-                            self.B*self.K*self.state[X,Y,Z,1] * self.state[X,self.pbc(Y+1),Z,0] * self.state[self.pbc(X+1),Y,Z,1] +
-                            self.B*self.K*self.state[X,Y,self.pbc(Z-1),2] * self.state[X,Y,self.pbc(Z-1),0] * self.state[self.pbc(X+1),Y,self.pbc(Z-1),2] +
-                            self.B*self.K*self.state[X,self.pbc(Y-1),Z,1] * self.state[X,self.pbc(Y-1),Z,0] * self.state[self.pbc(X+1),self.pbc(Y-1),Z,1]
+                            self.K*self.state[X,Y,Z,2] * self.state[X,Y,self.pbc(Z+1),0] * self.state[self.pbc(X+1),Y,Z,2] +
+                            self.K*self.state[X,Y,Z,1] * self.state[X,self.pbc(Y+1),Z,0] * self.state[self.pbc(X+1),Y,Z,1] +
+                            self.K*self.state[X,Y,self.pbc(Z-1),2] * self.state[X,Y,self.pbc(Z-1),0] * self.state[self.pbc(X+1),Y,self.pbc(Z-1),2] +
+                            self.K*self.state[X,self.pbc(Y-1),Z,1] * self.state[X,self.pbc(Y-1),Z,0] * self.state[self.pbc(X+1),self.pbc(Y-1),Z,1]
                             +
-                            self.B*self.state[X,Y,Z,3]*self.state[self.pbc(X+1),Y,Z,3] 
+                            self.K*self.B*self.state[X,Y,Z,3]*self.state[self.pbc(X+1),Y,Z,3] 
                         )
 
             # Spin is on the y-axis bond
             if b==1:
                 e += -2*self.state[X,Y,Z,1]*(
-                            self.B*self.K*self.state[X,Y,Z,2] * self.state[X,Y,self.pbc(Z+1),1] * self.state[X,self.pbc(Y+1),Z,2] +
-                            self.B*self.K*self.state[X,Y,Z,0] * self.state[self.pbc(X+1),Y,Z,1] * self.state[X,self.pbc(Y+1),Z,0] +
-                            self.B*self.K*self.state[X,Y,self.pbc(Z-1),2] * self.state[X,Y,self.pbc(Z-1),1] * self.state[X,self.pbc(Y+1),self.pbc(Z-1),2] +
-                            self.B*self.K*self.state[self.pbc(X-1),Y,Z,0] * self.state[self.pbc(X-1),Y,Z,1] * self.state[self.pbc(X-1),self.pbc(Y+1),Z,0]
+                            self.K*self.state[X,Y,Z,2] * self.state[X,Y,self.pbc(Z+1),1] * self.state[X,self.pbc(Y+1),Z,2] +
+                            self.K*self.state[X,Y,Z,0] * self.state[self.pbc(X+1),Y,Z,1] * self.state[X,self.pbc(Y+1),Z,0] +
+                            self.K*self.state[X,Y,self.pbc(Z-1),2] * self.state[X,Y,self.pbc(Z-1),1] * self.state[X,self.pbc(Y+1),self.pbc(Z-1),2] +
+                            self.K*self.state[self.pbc(X-1),Y,Z,0] * self.state[self.pbc(X-1),Y,Z,1] * self.state[self.pbc(X-1),self.pbc(Y+1),Z,0]
                             +
-                            self.B*self.state[X,Y,Z,3]*self.state[X,self.pbc(Y+1),Z,3]
+                            self.K*self.B*self.state[X,Y,Z,3]*self.state[X,self.pbc(Y+1),Z,3]
                         )
 
             # Spin is on the z-axis bond
             if b==2:
                 e += -2*self.state[X,Y,Z,2]*(
-                            self.B*self.K*self.state[X,Y,Z,1] * self.state[X,self.pbc(Y+1),Z,2] * self.state[X,Y,self.pbc(Z+1),1] +
-                            self.B*self.K*self.state[X,Y,Z,0] * self.state[self.pbc(X+1),Y,Z,2] * self.state[X,Y,self.pbc(Z+1),0] +
-                            self.B*self.K*self.state[X,self.pbc(Y-1),Z,1] * self.state[X,self.pbc(Y-1),Z,2] * self.state[X,self.pbc(Y-1),self.pbc(Z+1),1] +
-                            self.B*self.K*self.state[self.pbc(X-1),Y,Z,0] * self.state[self.pbc(X-1),Y,Z,2] * self.state[self.pbc(X-1),Y,self.pbc(Z+1),0]
+                            self.K*self.state[X,Y,Z,1] * self.state[X,self.pbc(Y+1),Z,2] * self.state[X,Y,self.pbc(Z+1),1] +
+                            self.K*self.state[X,Y,Z,0] * self.state[self.pbc(X+1),Y,Z,2] * self.state[X,Y,self.pbc(Z+1),0] +
+                            self.K*self.state[X,self.pbc(Y-1),Z,1] * self.state[X,self.pbc(Y-1),Z,2] * self.state[X,self.pbc(Y-1),self.pbc(Z+1),1] +
+                            self.K*self.state[self.pbc(X-1),Y,Z,0] * self.state[self.pbc(X-1),Y,Z,2] * self.state[self.pbc(X-1),Y,self.pbc(Z+1),0]
                             +
-                            self.B*self.state[X,Y,Z,3]*self.state[X,Y,self.pbc(Z+1),3]
+                            self.K*self.B*self.state[X,Y,Z,3]*self.state[X,Y,self.pbc(Z+1),3]
                         )
 
             # Spin is on the vertex 
             if b==3:
                 e += -2*self.state[X,Y,Z,3]*(
-                            self.B*self.state[X,Y,Z,0]*self.state[self.pbc(X+1),Y,Z,3] +
-                            self.B*self.state[self.pbc(X-1),Y,Z,3]*self.state[self.pbc(X-1),Y,Z,0] +
-                            self.B*self.state[X,Y,Z,1]*self.state[X,self.pbc(Y+1),Z,3] +
-                            self.B*self.state[X,self.pbc(Y-1),Z,3]*self.state[X,self.pbc(Y-1),Z,1] +
-                            self.B*self.state[X,Y,Z,2]*self.state[X,Y,self.pbc(Z+1),3] +
-                            self.B*self.state[X,Y,self.pbc(Z-1),3]*self.state[X,Y,self.pbc(Z-1),2]
+                            self.K*self.B*self.state[X,Y,Z,0]*self.state[self.pbc(X+1),Y,Z,3] +
+                            self.K*self.B*self.state[self.pbc(X-1),Y,Z,3]*self.state[self.pbc(X-1),Y,Z,0] +
+                            self.K*self.B*self.state[X,Y,Z,1]*self.state[X,self.pbc(Y+1),Z,3] +
+                            self.K*self.B*self.state[X,self.pbc(Y-1),Z,3]*self.state[X,self.pbc(Y-1),Z,1] +
+                            self.K*self.B*self.state[X,Y,Z,2]*self.state[X,Y,self.pbc(Z+1),3] +
+                            self.K*self.B*self.state[X,Y,self.pbc(Z-1),3]*self.state[X,Y,self.pbc(Z-1),2]
                         )
 
             return e
@@ -124,13 +124,13 @@ def Run(vals):
             for X in np.arange(self.length):
                 for Y in np.arange(self.length):
                     for Z in np.arange(self.length):
-                        E += self.K*self.state[X,Y,Z,1]*self.state[X,Y,Z,2]*self.state[X,Y,self.pbc(Z+1),1]*self.state[X,self.pbc(Y+1),Z,2]
-                        E += self.K*self.state[X,Y,Z,0]*self.state[X,Y,Z,2]*self.state[X,Y,self.pbc(Z+1),0]*self.state[self.pbc(X+1),Y,Z,2]
-                        E += self.K*self.state[X,Y,Z,0]*self.state[X,Y,Z,1]*self.state[X,self.pbc(Y+1),Z,0]*self.state[self.pbc(X+1),Y,Z,1]
+                        E += self.state[X,Y,Z,1]*self.state[X,Y,Z,2]*self.state[X,Y,self.pbc(Z+1),1]*self.state[X,self.pbc(Y+1),Z,2]
+                        E += self.state[X,Y,Z,0]*self.state[X,Y,Z,2]*self.state[X,Y,self.pbc(Z+1),0]*self.state[self.pbc(X+1),Y,Z,2]
+                        E += self.state[X,Y,Z,0]*self.state[X,Y,Z,1]*self.state[X,self.pbc(Y+1),Z,0]*self.state[self.pbc(X+1),Y,Z,1]
                         
-                        E += self.state[X,Y,Z,3]*self.state[X,Y,Z,0]*self.state[self.pbc(X+1),Y,Z,3]
-                        E += self.state[X,Y,Z,3]*self.state[X,Y,Z,1]*self.state[X,self.pbc(Y+1),Z,3]
-                        E += self.state[X,Y,Z,3]*self.state[X,Y,Z,2]*self.state[X,Y,self.pbc(Z+1),3]
+                        E += self.B*self.state[X,Y,Z,3]*self.state[X,Y,Z,0]*self.state[self.pbc(X+1),Y,Z,3]
+                        E += self.B*self.state[X,Y,Z,3]*self.state[X,Y,Z,1]*self.state[X,self.pbc(Y+1),Z,3]
+                        E += self.B*self.state[X,Y,Z,3]*self.state[X,Y,Z,2]*self.state[X,Y,self.pbc(Z+1),3]
 
             return E
 
@@ -200,19 +200,19 @@ def Run(vals):
     E_array = np.array(E_array)
     E2_array = np.array(E2_array)
 
-    C, C_std = JackKnife(E_array, E2_array, B_val, L_val)
+    C, C_std = JackKnife(E_array, E2_array, K_val, L_val)
 
     return [np.mean(E_array), np.mean(E2_array), np.std(E_array), np.std(E2_array), C, C_std] 
 
 if __name__ == "__main__":
 
-    L = 15
+    L = 10
 
-    #B = np.array([0.1])
-    #K = np.linspace(0.7, 0.8, 30)
+    B = np.array([0.141739])
+    K = np.linspace(0.7, 0.8, 30)
 
-    B = np.linspace(0.2, 0.25, 30)
-    K = np.array([5])
+    #B = np.linspace(0.2, 0.25, 30)
+    #K = np.array([5])
 
     K_vals = []
     for K_i in K:
